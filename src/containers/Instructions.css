@@ -1,0 +1,8 @@
+.Instructions {
+  align-items: center;
+  text-align: center;
+}
+
+.CurrentPlayer {
+  color: orange;
+}
