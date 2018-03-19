@@ -1,7 +1,7 @@
 # Battleship-Frontend
 
 Clone the repo
-Add remote: 
+Add remote: git remote add origin git@github.com:Bianca91/Battleship-Frontend.git
 
 Pull the master branch git pull origin master
 
