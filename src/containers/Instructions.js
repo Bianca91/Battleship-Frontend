@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import './Instructions.css'
 import { connect } from 'react-redux'
 import { checkBoat, createBoatInstruction } from '../lib/game'
-import { nextBoat, changePlayer } from '../actions/addBoat.js'
+import { nextBoat, changePlayer } from '../actions/actions.js'
 
 
 export class Instructions extends PureComponent {
   static propTypes = {
-    player: PropTypes.number.isRequired,
+    currentPlayer: PropTypes.number.isRequired,
     boat:PropTypes.number.isRequired,
     nextBoat: PropTypes.func.isRequired,
     changePlayer: PropTypes.func.isRequired
@@ -44,7 +44,7 @@ handleClick = () => {
 
 const mapStateToProps = (reduxState) => {
   return {
-    player: reduxState.player,
+    currentPlayer: reduxState.currentPlayer,
     boat: reduxState.boat
   }
 }

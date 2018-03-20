@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import './Square.css'
-import { addBoatSquare } from '../../actions/addBoat'
+import { addBoatSquare } from '../../actions/actions'
 import { connect } from 'react-redux'
 
 

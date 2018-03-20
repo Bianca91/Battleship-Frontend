@@ -1,11 +1,11 @@
-import board from './board'
+import boardMapPlayer1 from './boardMapPlayer1'
 import boat from './boat'
-import player from './player'
+import currentPlayer from './currentPlayer'
 
 export default {
-  board,
+  boardMapPlayer1,
   boat,
-  player
+  currentPlayer
 }
 
 // import games from './games'
