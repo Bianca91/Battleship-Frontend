@@ -6,20 +6,28 @@ const boatsLength = {
   5:2
 }
 
+export const checkBoat = (boat, board) => {
+  //count number of boat squares
+  let counter = 0
+  board.map(row => { return row.map(value => { return value === boat ? counter+=1 : counter })})
 
-export const checkBoat = (boat) => {
-  return true
+  let contained = false
+  let arr = []
+
+  //convert row into a string and check that the string [boat, boat, boat, ..] is contained
+  for (let i = 0; i < boatsLength[boat]; i++) {arr.push(boat)}
+  board.map(row => { return row.toString().indexOf(arr.toString()) !== -1 ? contained = true : contained})
+
+
+  //column becomes row and check is made same as above
+  let boardTransposed = board.map((row, y) => row.map((v, x) => board[x][y]))
+  boardTransposed.map(row => { return row.toString().indexOf(arr.toString()) !== -1 ? contained = true : contained})
+
+  //check that the counter is right and that the boat is horizontal or diagonal
+  if (counter === boatsLength[boat] && contained) return true
+  return false
 }
 
 export const createBoatInstruction = (boat) => {
-  switch (boat) {
-    case 1: return "Create Boat1 length 5 squares and click OK"
-    case 2: return "Create Boat2 length 4 squares and click OK"
-    case 3: return "Create Boat3 length 3 squares and click OK"
-    case 4: return "Create Boat4 length 3 squares and click OK"
-    case 5: return "Create Boat5 length 2 squares and click OK"
-    default: return "game state unknown"
-  }
+  return `Create boat${boat}, length ${boatsLength[boat]} squares and click OK`
 }
-
-//string interpolation possible

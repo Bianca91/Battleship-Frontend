@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import './Square.css'
-import { addBoatSquare } from '../../actions/actions'
+import { addBoatSquareP1, addBoatSquareP2 } from '../../actions/actions'
 import { connect } from 'react-redux'
-
 
 
 class Square extends PureComponent {
@@ -11,20 +10,33 @@ class Square extends PureComponent {
     value: PropTypes.number.isRequired,
     row: PropTypes.number.isRequired,
     col: PropTypes.number.isRequired,
-    addBoatSquare: PropTypes.func.isRequired,
-    boat: PropTypes.number.isRequired,
+    //addBoatSquareP1: PropTypes.func.isRequired,
+    //boat: PropTypes.number.isRequired,
   }
 
   handleClick = () => {
-    const {row, col, addBoatSquare, boat} = this.props
-    addBoatSquare(row, col, boat)
+    const {row, col, addBoatSquareP1, addBoatSquareP2, currentPlayer, boat, value} = this.props
+    if (value !== 0 && value !== boat) return
+    if (currentPlayer === 1) {
+      addBoatSquareP1(row, col, boat)
+    }
+    else {
+      addBoatSquareP2(row, col, boat)
+    }
+  }
+
+  makeClassName = () => {
+    const {value} = this.props
+    let classNameArray = ['Square']
+    classNameArray.push(`value${value || 0}`)
+    return classNameArray.join(' ')
   }
 
 
   render() {
     return (
       <div
-      className = {`Square value${this.props.value}`}
+      className = {this.makeClassName()}
       onClick = {this.handleClick}
       />
 
@@ -34,11 +46,13 @@ class Square extends PureComponent {
 
 const mapStateToProps = (reduxState) => {
   return {
-    boat: reduxState.boat
+    boat: reduxState.boat,
+    currentPlayer: reduxState.currentPlayer
+
   }
 }
 
-export default connect(mapStateToProps, { addBoatSquare })(Square)
+export default connect(mapStateToProps, { addBoatSquareP1, addBoatSquareP2 })(Square)
 
 //creates class Square with props of the square
 //className css purpose

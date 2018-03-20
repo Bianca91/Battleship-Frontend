@@ -1,12 +1,15 @@
-import boardMapPlayer1 from './boardMapPlayer1'
+import boatMapPlayer1 from './boatMapPlayer1'
+import boatMapPlayer2 from './boatMapPlayer2'
 import boat from './boat'
 import currentPlayer from './currentPlayer'
 
 export default {
-  boardMapPlayer1,
+  boatMapPlayer1,
+  boatMapPlayer2,
   boat,
   currentPlayer
 }
+
 
 // import games from './games'
 // import users from './users'
