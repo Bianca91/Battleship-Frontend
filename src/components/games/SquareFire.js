@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import './Square.css'
-import { addBoatSquareP1, addBoatSquareP2 } from '../../actions/actions'
+import './SquareFire.css'
+import { fireP1, fireP2, changePlayer } from '../../actions/actions'
 import { connect } from 'react-redux'
+import { checkWhatWasFired } from '../../lib/game'
 
 
-class Square extends PureComponent {
+class SquareFire extends PureComponent {
   static propTypes = {
     value: PropTypes.number.isRequired,
     row: PropTypes.number.isRequired,
@@ -15,19 +16,26 @@ class Square extends PureComponent {
   }
 
   handleClick = () => {
-    const {row, col, addBoatSquareP1, addBoatSquareP2, currentPlayer, boat, value, gameState} = this.props
-    if ((value !== 0 && value !== boat) || gameState === "play") return
+    const {row, col, fireP1, fireP2, boatMapPlayer1, boatMapPlayer2, currentPlayer, changePlayer, value, gameState} = this.props
+    if (value !== 0 || gameState === "addBoats") return
+    let fired
     if (currentPlayer === 1) {
-      addBoatSquareP1(row, col, boat)
+      fired = checkWhatWasFired(row, col, boatMapPlayer2)
+      console.log(fired);
+      fireP1(row, col, fired)
+      //changePlayer()
     }
     else {
-      addBoatSquareP2(row, col, boat)
+      fired = checkWhatWasFired(row, col, boatMapPlayer1)
+      console.log(fired);
+      fireP2(row, col, fired)
+      //changePlayer()
     }
   }
 
   makeClassName = () => {
     const {value} = this.props
-    let classNameArray = ['Square']
+    let classNameArray = ['SquareFire']
     classNameArray.push(`value${value || 0}`)
     return classNameArray.join(' ')
   }
@@ -46,13 +54,14 @@ class Square extends PureComponent {
 
 const mapStateToProps = (reduxState) => {
   return {
-    boat: reduxState.boat,
     currentPlayer: reduxState.currentPlayer,
+    boatMapPlayer1: reduxState.boatMapPlayer1,
+    boatMapPlayer2: reduxState.boatMapPlayer2,
     gameState: reduxState.gameState
   }
 }
 
-export default connect(mapStateToProps, { addBoatSquareP1, addBoatSquareP2 })(Square)
+export default connect(mapStateToProps, { fireP1, fireP2, changePlayer })(SquareFire)
 
 //creates class Square with props of the square
 //className css purpose

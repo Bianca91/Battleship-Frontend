@@ -23,7 +23,7 @@ export default (state = emptyBoard, {type, payload } = {}) => {
           if (colIndex !== payload.col) return thisValue
 
           switch (thisValue) {
-            case 0: return payload.boat
+            case 0: return payload.fired
             default: return 0
           }
         })

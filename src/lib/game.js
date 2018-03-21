@@ -24,10 +24,18 @@ export const checkBoat = (boat, board) => {
   boardTransposed.map(row => { return row.toString().indexOf(arr.toString()) !== -1 ? contained = true : contained})
 
   //check that the counter is right and that the boat is horizontal or diagonal
+  //return true
   if (counter === boatsLength[boat] && contained) return true
   return false
 }
 
 export const createBoatInstruction = (boat) => {
   return `Create boat${boat}, length ${boatsLength[boat]} squares and click OK`
+}
+
+export const checkWhatWasFired = (row, col, boatMap) => {
+  let val = boatMap[row][col]
+  //console.log(val);
+  if (val === 0) return 1
+  return 2
 }

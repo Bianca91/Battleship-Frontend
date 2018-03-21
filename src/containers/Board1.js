@@ -5,7 +5,7 @@ import './Board.css'
 import { connect } from 'react-redux'
 
 
-export class Board extends PureComponent {
+export class Board1 extends PureComponent {
   // static propTypes = {
   //   board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
   // }
@@ -57,7 +57,7 @@ const mapStateToProps = (reduxState) => {
 }
 
 
-export default connect(mapStateToProps)(Board)
+export default connect(mapStateToProps)(Board1)
 
 //prop board (arrayOfarray) that is connected to boatMapPlayer1
 //for each row in board do renderRow function

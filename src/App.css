@@ -9,6 +9,24 @@
   text-align: center;
 }
 
+.Boards {
+  display: flex;
+  justify-content: center;
+}
+
+
+.MyFloat {
+  margin: 10px;
+  text-align: center;
+}
+
+.Opponent {
+  margin: 10px;
+  text-align: center;
+}
+
+
+
 /* .App {
   text-align: center;
 }
