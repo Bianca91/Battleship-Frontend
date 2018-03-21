@@ -1,4 +1,33 @@
 .App {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+.App h1 {
+  flex: 1;
+  text-align: center;
+}
+
+.Boards {
+  display: flex;
+  justify-content: center;
+}
+
+
+.MyFloat {
+  margin: 10px;
+  text-align: center;
+}
+
+.Opponent {
+  margin: 10px;
+  text-align: center;
+}
+
+
+
+/* .App {
   text-align: center;
 }
 
@@ -25,4 +54,4 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
+} */

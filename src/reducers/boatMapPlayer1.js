@@ -1,4 +1,4 @@
-import { ADD_BOAT_SQUARE } from '../actions/types'
+import { ADD_BOAT_SQUARE_P1 } from '../actions/types'
 
 const emptyBoard = [
   [0,0,0,0,0,0,0,0,0,0],
@@ -15,7 +15,7 @@ const emptyBoard = [
 
 export default (state = emptyBoard, {type, payload } = {}) => {
   switch (type) {
-    case ADD_BOAT_SQUARE:
+    case ADD_BOAT_SQUARE_P1:
       return state.map((thisRow, rowIndex) => {
         if (rowIndex !== payload.row) return thisRow
 

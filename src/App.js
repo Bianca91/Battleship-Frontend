@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Board from './containers/Board'
+import Board1 from './containers/Board1'
+import Board2 from './containers/Board2'
+
 import Instructions from './containers/Instructions'
 
 
@@ -9,9 +11,26 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+
         <h1 className="title">Battleship</h1>
+
         <Instructions />
-        <Board />
+        <br />
+
+        <div className="Boards">
+
+          <div className="MyFloat">
+            <div className="MyFloatTitle">My Float</div>
+            <div className="MyFloatBoard"><Board1 /></div>
+          </div>
+
+          <div className="Opponent">
+            <div className="OpponentTitle">My Opponent</div>
+            <div className="OpponentBoard"><Board2 /></div>
+          </div>
+
+        </div>
+
       </div>
     );
   }
