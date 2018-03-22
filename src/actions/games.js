@@ -6,6 +6,8 @@ export const UPDATE_GAME = 'UPDATE_GAME'
 export const UPDATE_GAMES = 'UPDATE_GAMES'
 export const JOIN_GAME_SUCCESS = 'JOIN_GAME_SUCCESS'
 export const UPDATE_GAME_SUCCESS = 'UPDATE_GAME_SUCCESS'
+export const ADD_BOAT_SQUARE_P1 = 'ADD_BOAT_SQUARE_P1'
+export const ADD_BOAT_SQUARE_P2 = 'ADD_BOAT_SQUARE_P2'
 
 export const getGames = () => (dispatch, getState) => {
   const state = getState()
@@ -41,7 +43,7 @@ export const joinGame = (gameId) => (dispatch, getState) => {
 export const createGame = () => (dispatch, getState) => {
   const state = getState()
   const jwt = state.currentUser.jwt
-
+ console.log("createGame")
   request
     .post(`${baseUrl}/games`)
     .set('Authorization', `Bearer ${jwt}`)

@@ -13,6 +13,7 @@ import { withRouter } from "react-router";
 import Board1 from "./Board1";
 import Board2 from "./Board2";
 import GamesList from "../components/games/GamesList";
+import TopBar from "../components/layout/TopBar";
 
 export class Instructions extends PureComponent {
   constructor(props) {
@@ -82,6 +83,7 @@ export class Instructions extends PureComponent {
 
     return (
       <div className="Instructions">
+        <TopBar />
         <h3 className="CurrentPlayer">
           Player{this.props.currentPlayer} {mainText}
         </h3>
@@ -90,9 +92,20 @@ export class Instructions extends PureComponent {
         <button onClick={this.handleClick} className="okButton">
           {buttonText}
         </button>
-        <div>
-          <Board1 />
-          <Board2 />
+        <div className="Boards">
+          <div className="MyFloat">
+            <div className="MyFloatTitle">My Float</div>
+            <div className="MyFloatBoard">
+              <Board1 />
+            </div>
+          </div>
+
+          <div className="Opponent">
+            <div className="OpponentTitle">My Opponent</div>
+            <div className="OpponentBoard">
+              <Board2 />
+            </div>
+          </div>
         </div>
       </div>
     );

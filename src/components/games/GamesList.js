@@ -9,7 +9,6 @@ import Card, { CardActions, CardContent } from "material-ui/Card";
 import Typography from "material-ui/Typography";
 import { withRouter } from "react-router";
 import "./GamesList.css";
-import Instructions from "../../containers/Instructions";
 
 class GamesList extends PureComponent {
   componentWillMount() {
@@ -53,7 +52,7 @@ class GamesList extends PureComponent {
 
     if (!authenticated) return <Redirect to="/login" />;
 
-    if (games === null || users === null) return null;
+    if (games === null || users === null) return null
 
     return (
       <Paper class="outer-paper">
