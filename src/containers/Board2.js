@@ -1,14 +1,10 @@
 import React, { PureComponent } from 'react'
-//import PropTypes from 'prop-types'
 import SquareFire from '../components/games/SquareFire'
 import './Board.css'
 import { connect } from 'react-redux'
 
 
 export class Board2 extends PureComponent {
-  // static propTypes = {
-  //   board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
-  // }
 
   renderRow = (row, rowIndex) => {
     return (
