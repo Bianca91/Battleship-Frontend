@@ -1,4 +1,4 @@
-import { FIRE_P1 } from '../actions/types'
+import { FIRE_P1, NEW_GAME } from '../actions/types'
 
 const emptyBoard = [
   [0,0,0,0,0,0,0,0,0,0],
@@ -28,7 +28,9 @@ export default (state = emptyBoard, {type, payload } = {}) => {
           }
         })
       })
-
+    case NEW_GAME:
+      return emptyBoard
+      
     default:
       return state
   }
