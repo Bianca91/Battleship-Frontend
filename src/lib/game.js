@@ -39,3 +39,15 @@ export const checkWhatWasFired = (row, col, boatMap) => {
   if (val === 0) return 1
   return 2
 }
+
+
+export const checkIfWon = (fireMap, boatMap, fired) => {
+  let countFiresOnBoats = fired === 2 ? 1 : 0
+  fireMap.map(row => { return row.map(value => { return value === 2 ? countFiresOnBoats+=1 : countFiresOnBoats })})
+
+  let countBoats = 0
+  boatMap.map(row => { return row.map(value => { return value > 0 ? countBoats+=1 : countBoats })})
+
+  if (countFiresOnBoats === countBoats) return true
+  return false
+}

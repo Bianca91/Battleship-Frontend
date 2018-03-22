@@ -1,17 +1,18 @@
 import React, { PureComponent } from "react";
-//import PropTypes from 'prop-types'
 import "./Instructions.css";
 import { connect } from "react-redux";
+import { checkBoat, createBoatInstruction } from "../lib/game";
 import {
-  checkBoat,
-  createBoatInstruction,
-  checkWhatWasFired
-} from "../lib/game";
-import { nextBoat, changePlayer, changeState } from "../actions/actions";
+  nextBoat,
+  changePlayer,
+  changeState,
+  newGame
+} from "../actions/actions";
 import ErrorMessage from "../components/games/ErrorMessage";
+import { withRouter } from "react-router";
 import Board1 from "./Board1";
 import Board2 from "./Board2";
-import { withRouter } from "react-router";
+import GamesList from "../components/games/GamesList";
 
 export class Instructions extends PureComponent {
   constructor(props) {
@@ -19,17 +20,9 @@ export class Instructions extends PureComponent {
     this.state = { errorText: "" };
   }
 
-  // static propTypes = {
-  //   currentPlayer: PropTypes.number.isRequired,
-  //   boat: PropTypes.number.isRequired,
-  //   nextBoat: PropTypes.func.isRequired,
-  //   changePlayer: PropTypes.func.isRequired,
-  //   board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired
-  // }
-
   makeText = () => {
     const { boat, gameState } = this.props;
-    if (gameState === "play") return "";
+    if (gameState !== "addBoats") return "";
     return createBoatInstruction(boat);
   };
 
@@ -42,9 +35,9 @@ export class Instructions extends PureComponent {
       boatMapPlayer1,
       boatMapPlayer2,
       gameState,
-      changeState
+      changeState,
+      newGame
     } = this.props;
-
     let board = currentPlayer === 1 ? boatMapPlayer1 : boatMapPlayer2;
 
     if (gameState === "addBoats") {
@@ -62,27 +55,45 @@ export class Instructions extends PureComponent {
       } else {
         this.setState({ errorText: "ERROR: Boat shape is not correct" });
       }
-    } else {
+    } else if (gameState === "play") {
       this.setState({ errorText: "" });
       changePlayer();
+    } else {
+      newGame();
     }
   };
 
   render() {
+    let mainText;
+    let buttonText;
+    switch (this.props.gameState) {
+      case "addBoats":
+        mainText = "is adding boats..";
+        buttonText = "Next Boat";
+        break;
+      case "play":
+        mainText = "is playing..";
+        buttonText = "OK";
+        break;
+      default:
+        mainText = "has won !!!";
+        buttonText = "New Game";
+    }
+
     return (
       <div className="Instructions">
         <h3 className="CurrentPlayer">
-          Player{this.props.currentPlayer} is{" "}
-          {this.props.gameState === "addBoats" ? "adding boats" : "playing"}..
+          Player{this.props.currentPlayer} {mainText}
         </h3>
         <h4 className="Text">{this.makeText()}</h4>
         <ErrorMessage errorText={this.state.errorText} />
         <button onClick={this.handleClick} className="okButton">
-          OK
+          {buttonText}
         </button>
-        
-        <Board1 />
-        <Board2 />
+        <div>
+          <Board1 />
+          <Board2 />
+        </div>
       </div>
     );
   }
@@ -101,5 +112,6 @@ const mapStateToProps = reduxState => {
 export default connect(mapStateToProps, {
   nextBoat,
   changePlayer,
-  changeState
+  changeState,
+  newGame
 })(Instructions);

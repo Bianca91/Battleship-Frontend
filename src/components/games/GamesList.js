@@ -9,7 +9,7 @@ import Card, { CardActions, CardContent } from "material-ui/Card";
 import Typography from "material-ui/Typography";
 import { withRouter } from "react-router";
 import "./GamesList.css";
-import Instructions from '../../containers/Instructions'
+import Instructions from "../../containers/Instructions";
 
 class GamesList extends PureComponent {
   componentWillMount() {
@@ -67,10 +67,6 @@ class GamesList extends PureComponent {
         </Button>
 
         <div>{games.map(game => this.renderGame(game))}</div>
-        <div>
-          <Instructions />
-        </div>
-
       </Paper>
     );
   }

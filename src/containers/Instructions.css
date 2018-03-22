@@ -6,25 +6,11 @@
 .CurrentPlayer {
   color: orange;
 }
-.Board1 {
-  align-items: center;
-  flex: 1;
-  margin: 30px auto;
-  min-width: 440px;
-  max-width: 80%;
-  border: 4px solid #006699;
-}
 
-.Board .row {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-.Board1 {
-  align-items: center;
-  flex: 1;
-  margin: 30px auto;
-  min-width: 440px;
-  max-width: 80%;
-  border: 4px solid #006699;
+.okButton {
+  font-size: 20px;
+  border-radius: 4px;
+  width: 150px;
+  height: 40px;
+  background-color: red;
 }
