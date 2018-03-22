@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import LoginPage from './components/login/LoginPage'
+import SignupPage from './components/signup/SignupPage'
 import './App.css';
 import Board1 from './containers/Board1'
 import Board2 from './containers/Board2'
+import LogoutPage from './components/logout/LogoutPage'
+import TopBar from './components/layout/TopBar'
 
 import Instructions from './containers/Instructions'
+
 
 
 class App extends Component {
@@ -11,6 +17,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+
+        <Router>
+              <div>
+                <TopBar />
+                <Route exact path="/login" component={LoginPage} />
+                <Route exact path="/logout" component={LogoutPage} />
+                <Route exact path="/signup" component={SignupPage} />
+                <Route exact path="/" render={ () => <Redirect to="/games" /> } />
+              </div>
+            </Router>
 
         <h1 className="title">Battleship</h1>
 

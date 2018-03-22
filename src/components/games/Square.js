@@ -24,7 +24,7 @@ class Square extends PureComponent {
       addBoatSquareP2(row, col, boat)
     }
   }
-
+//creates a className for the square
   makeClassName = () => {
     const {value} = this.props
     let classNameArray = ['Square']

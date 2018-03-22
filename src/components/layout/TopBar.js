@@ -17,7 +17,7 @@ const styles = {
     flex: 1,
   },
   menuButton: {
-    marginLeft: -12,
+    marginLeft: -10,
     marginRight: 20,
   },
 };
@@ -33,7 +33,6 @@ function ButtonAppBar(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="title" color="inherit" className={classes.flex}>
-            Multiplayer Tic Tac Toe
           </Typography>
           {
             location.pathname.indexOf('signup') > 0 &&

@@ -5,6 +5,7 @@ import currentPlayer from './currentPlayer'
 import fireMapPlayer1 from './fireMapPlayer1'
 import fireMapPlayer2 from './fireMapPlayer2'
 import gameState from './gameState'
+import allowedNextMove from './allowedNextMove'
 
 export default {
   boatMapPlayer1,
@@ -13,7 +14,8 @@ export default {
   currentPlayer,
   fireMapPlayer1,
   fireMapPlayer2,
-  gameState
+  gameState,
+  allowedNextMove
 }
 
 
