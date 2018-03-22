@@ -10,6 +10,7 @@ import fireMapPlayer2 from "./fireMapPlayer2";
 import gameState from "./gameState";
 import boat from "./boat";
 import allowedNextMove from "./allowedNextMove";
+import currentPlayer from "./currentPlayer"
 
 export default {
   games,
@@ -23,7 +24,9 @@ export default {
   fireMapPlayer2,
   gameState,
   boat,
-  allowedNextMove
+  allowedNextMove,
+  currentPlayer
+
 };
 
 // import boatMapPlayer1 from './boatMapPlayer1'
