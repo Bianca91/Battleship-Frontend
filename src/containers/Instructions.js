@@ -83,7 +83,6 @@ export class Instructions extends PureComponent {
 
     return (
       <div className="Instructions">
-        <TopBar />
         <h3 className="CurrentPlayer">
           Player{this.props.currentPlayer} {mainText}
         </h3>

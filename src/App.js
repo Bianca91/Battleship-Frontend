@@ -7,12 +7,14 @@ import GameDetails from "./components/games/GameDetails";
 import LogoutPage from "./components/logout/LogoutPage";
 import "./App.css";
 import Instructions from "./containers/Instructions";
+import TopBar from "./components/layout/TopBar";
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div>
+          <TopBar />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/logout" component={LogoutPage} />
           <Route exact path="/signup" component={SignupPage} />
